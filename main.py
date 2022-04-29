@@ -1,11 +1,12 @@
 # author: Yuning Ding
 # date:2022.04.29
-# version:0.3
-# 修复了windows系统下文件保存功能无效的bug
+# version:0.3.1
+# 使用封装的模块解决部分兼容性问题
 
 import logging
 import os
 import time
+from shutil import copyfile
 
 import finger
 
@@ -28,11 +29,10 @@ def check(cmp, confidence=0.7):
 
     if max_x < confidence:
         logging.info('非法用户访问,' + '时间：' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
-        # for mac os/linux
-        # st = 'cp ' + cmp + ' ./invalid/'
-        # for win
-        st = 'copy ' + cmp + ' ./invalid/' + cmp
-        os.system(st)
+        # st = 'cp ' + cmp + ' ./invalid/'+cmp[2:]
+        st = './invalid/' + cmp[2:]
+        # os.system(st)
+        copyfile(cmp, st)
         return 1
     else:
         logging.info('用户:' + name + ' 置信度：' + str(max_x) + '时间：' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()))
