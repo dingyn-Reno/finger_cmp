@@ -1,6 +1,6 @@
 # author: Yuning Ding
 # date:2022.04.29
-# version:0.3.1
+# version:0.3.2
 # 使用封装的模块解决部分兼容性问题
 
 import logging
@@ -18,7 +18,7 @@ cmp = './1.png'
 # print(cmp.split('/')[-1])
 
 # cmp:待匹配图片路径 confidence:置信度,返回0为不匹配，1为匹配
-def check(cmp, confidence=1.1):
+def check(cmp, confidence=0.7):
     g = os.walk(r"./dic")
     max_x = 0
     name = ''
