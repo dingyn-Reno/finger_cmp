@@ -1,6 +1,6 @@
 # author: Yuning Ding
 # date:2022.04.29
-# version:0.3.2
+# version:0.3.3
 # 使用封装的模块解决部分兼容性问题
 
 import logging
@@ -12,6 +12,7 @@ import finger
 
 logging.basicConfig(filename='logger.log', level=logging.INFO)
 
+#将要比对的路径
 cmp = './1.png'
 
 
